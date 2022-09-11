@@ -9,7 +9,7 @@ class Delete extends Component{
     deleteHandler = (event) => {
         axios
           .delete(
-            `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.props.email}/delete/${this.props.id}`
+            `https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.props.email}/delete/${this.props.id}`
           )
           .then((res) => {
             console.log(res.data);

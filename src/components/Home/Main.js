@@ -38,7 +38,7 @@ class Main extends Component {
   }
   getMyTweets = () => {
     axios
-      .get(`http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}`)
+      .get(`https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}`)
       .then((res) => {
         this.setState({ dataArray: res.data });
         
@@ -53,7 +53,7 @@ class Main extends Component {
     console.log(body);
     axios
       .post(
-        `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}/add`,
+        `https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}/add`,
         body
       )
       .then((res) => {

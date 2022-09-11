@@ -19,7 +19,7 @@ class Edit extends Component {
     console.log(content);
     axios
       .put(
-        `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}/update/${this.props.id}`,
+        `https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}/update/${this.props.id}`,
         content,
         config
       )

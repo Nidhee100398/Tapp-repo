@@ -14,7 +14,7 @@ class Nav extends Component{
       updateLogStatus=(event)=>{
     
         axios
-          .post(`http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/logout?email=${this.state.email}`)
+          .post(`https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/logout?email=${this.state.email}`)
           .then((res) => {
             console.log(res.data);
             window.sessionStorage.clear();
