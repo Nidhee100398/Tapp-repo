@@ -18,7 +18,7 @@ class Tweet extends Component {
         console.log(body);
         axios
           .post(
-            `http://localhost:8085/api/v1.0/tweets/${this.state.email}/add`,
+            `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.state.email}/add`,
             body
           )
           .then((res) => {

@@ -23,7 +23,7 @@ class Search extends Component{
 
     getTweetsByUser = (event) => {
         axios
-          .get(`http://localhost:8085/api/v1.0/tweets/${this.username.current.value}`)
+          .get(`http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.username.current.value}`)
           .then((res) => {
             this.dataArray=res.data;
             if(this.dataArray.length===0){

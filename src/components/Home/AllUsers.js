@@ -21,7 +21,7 @@ class AllUsers extends Component {
 
   getAllUsers = () => {
     axios
-      .get(`http://localhost:8085/api/v1.0/tweets/users/all`)
+      .get(`http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/users/all`)
       .then((res) => {
         this.userArray = res.data;
         this.setState({ userArray: res.data });

@@ -29,7 +29,7 @@ class SignUp extends Component {
       gender: this.gender.current.value,
     };
     axios
-      .post("http://localhost:8085/api/v1.0/tweets/register", body, {
+      .post("http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/register", body, {
         data: {},
         headers: { "Content-Type": "application/json" },
         responseType: "text",

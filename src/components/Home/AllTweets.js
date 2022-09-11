@@ -37,7 +37,7 @@ class AllTweet extends Component {
   };
   getTweets = () => {
     axios
-      .get(`http://localhost:8085/api/v1.0/tweets/all`)
+      .get(`http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/all`)
       .then((res) => {
       
         this.dataArray=res.data;

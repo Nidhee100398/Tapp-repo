@@ -15,7 +15,7 @@ class Like extends Component{
     likeHandler = (event) => {
         axios
           .put(
-            `http://localhost:8085/api/v1.0/tweets/${this.props.email}/like/${this.props.id}`
+            `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.props.email}/like/${this.props.id}`
           )
           .then((res) => {
             console.log(res.data);

@@ -22,7 +22,7 @@ class Forgot extends Component {
   getUserDetails = (event) => {
     axios
       .get(
-        `http://localhost:8085/api/v1.0/tweets/${this.email.current.value}/forgot`
+        `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.email.current.value}/forgot`
       )
       .then((res) => {
         this.setState({
@@ -60,7 +60,7 @@ class Forgot extends Component {
       const config = { headers: { "Content-Type": "application/json" } };
 
       axios
-        .put("http://localhost:8085/api/v1.0/tweets/updateUser", body, config)
+        .put("http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/updateUser", body, config)
         .then((res) => {
           console.log(res.data);
 

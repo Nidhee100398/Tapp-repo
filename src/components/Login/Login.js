@@ -35,7 +35,7 @@ class Login extends Component {
     console.log(body);
 
     axios
-      .post("http://localhost:8085/api/v1.0/tweets/login", body)
+      .post("http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login", body)
       .then((res) => {
         console.log(res.data);
         window.sessionStorage.setItem("username", res.data.username);

@@ -18,7 +18,7 @@ class Reply extends Component {
    componentDidUpdate() {this.getReply()}
    getReply = () => {
      axios
-   .get(`http://localhost:8085/api/v1.0/tweets/all`)
+   .get(`http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/all`)
     .then((res) => {
       
        this.dataArray=res.data;
@@ -39,7 +39,7 @@ class Reply extends Component {
     };
     axios
       .post(
-        `http://localhost:8085/api/v1.0/tweets/${this.props.email}/reply2/${this.props.id}`,
+        `http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/${this.props.email}/reply2/${this.props.id}`,
         body
       )
       .then((res) => {
