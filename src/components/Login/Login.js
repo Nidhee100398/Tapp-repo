@@ -33,9 +33,22 @@ class Login extends Component {
       password: this.state.password,
     };
     console.log(body);
-
-    axios
-      .post("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login", body)
+    
+//       body: JSON.stringify({
+//                     firstName: firstName,
+//                     lastName: lastName,
+//                     mobileNumber: mobileNumber,
+//                     dateOfBirth:dateOfBirth,
+//                     email:email,
+//                     password: password,
+// //                 })
+//     axios
+//       .post("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login",
+            fetch("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },body)
       .then((res) => {
         console.log(res.data);
         window.sessionStorage.setItem("username", res.data.username);
