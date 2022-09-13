@@ -17,9 +17,12 @@ function Login() {
  const  onSubmitHandler =  (event) => {
     event.preventDefault();
        fetch("https://cors-everywhere.herokuapp.com/http://tweetappnew.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login", {
-      method: "POST",
+      method: "POST",{
+         mode:'cors'},
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+             'Accept':'application/json',
+        'Access-Control-Allow-Origin':'*'
       }, body: JSON.stringify({
         email: email,
         password: password
