@@ -30,8 +30,8 @@ function Login() {
         const result = res.json();
         result.then((val)=>{
           console.log(val)
-        window.sessionStorage.setItem("username", val.username);
-        window.sessionStorage.setItem("email", val.email);
+        localStorage.setItem("username", val.username);
+        localStorage.setItem("email", val.email);
         })
         
         history("/Home")
