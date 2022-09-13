@@ -18,8 +18,8 @@ class AllTweet extends Component {
       dataArray: [],
       replies: [],
       tweet: "",
-      name: window.sessionStorage.getItem("username"),
-      email: window.sessionStorage.getItem("email"),
+      name: localStorage.getItem("username"),
+      email: localStorage.getItem("email"),
       disabled: true,
       show: false,
       reply: false
