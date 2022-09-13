@@ -44,15 +44,19 @@ class Login extends Component {
 // //                 })
 //     axios
 //       .post("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login",
+
             fetch("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
-                },body)
+                },body:body})
       .then((res) => {
-        console.log(res.data);
-        window.sessionStorage.setItem("username", res.data.username);
-        window.sessionStorage.setItem("email", res.data.email);
+              const result = res.json();
+              result.then((val)=>{
+              console.log(res.data);
+        window.sessionStorage.setItem("username", val.username);
+        window.sessionStorage.setItem("email", val.email);})
+        
 
         this.setState({ redirect: true });
       })
