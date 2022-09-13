@@ -1,130 +1,105 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link ,useNavigate} from "react-router-dom";
 import "./Login.css";
+function Login() {
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      error: "",
-      redirect: false,
-    };
+  const history=useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onEmailHandler = (event) => {
+    setEmail(event.target.value)
+  }
+  const onPassHandler = (event) => {
+    setPassword(event.target.value)
   }
 
-  onEmailHandler = (event) => {
-    this.setState({
-      email: event.target.value,
-    });
-  };
-
-  onPassHandler = (event) => {
-    this.setState({
-      password: event.target.value,
-    });
-  };
-
-  onSubmitHandler = (event) => {
-    let body = {
-      email: this.state.email,
-      password: this.state.password,
-    };
-    console.log(body);
-    
-//       body: JSON.stringify({
-//                     firstName: firstName,
-//                     lastName: lastName,
-//                     mobileNumber: mobileNumber,
-//                     dateOfBirth:dateOfBirth,
-//                     email:email,
-//                     password: password,
-// //                 })
-//     axios
-//       .post("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login",
-
-            fetch("https://cors-everywhere.herokuapp.com/http://tweetspringapp-env.eba-rpr7tqkk.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },body:body})
+ const  onSubmitHandler =  (event) => {
+    event.preventDefault();
+       fetch("https://cors-everywhere.herokuapp.com/http://tweetappnew.us-west-2.elasticbeanstalk.com/api/v1.0/tweets/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
       .then((res) => {
-              const result = res.json();
-              result.then((val)=>{
-              console.log(res.data);
+        if(res.status===200){
+        const result = res.json();
+        result.then((val)=>{
+          console.log(val)
         window.sessionStorage.setItem("username", val.username);
-        window.sessionStorage.setItem("email", val.email);})
+        window.sessionStorage.setItem("email", val.email);
+        })
         
-
-        this.setState({ redirect: true });
+        history("/Home")
+        }else{
+        window.alert("login Failed");
+        }
       })
       .catch((err) => {
+        console.log(err);
         this.setState({ error: "Please Check your credentials!" });
       });
-
-    event.preventDefault();
   };
-
-  render() {
-    if (this.state.redirect) {
-      return <Navigate to="/Home" />;
-    }
-    return (
-      <div className="container">
-        <h2>Login</h2>
-        <form onSubmit={this.onSubmitHandler}>
-          <div className="form-group">
-            <div className="row">
-              <div className="col-sm-2">
-                <label>Email</label>
-              </div>
-              <div className="col-sm">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email1"
-                  placeholder="Enter your email!"
-                  required
-                  onChange={this.onEmailHandler}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <div className="col-sm-2">
-                <label>Password</label>
-              </div>
-              <div className="col-sm">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Enter the password!"
-                  required
-                  onChange={this.onPassHandler}
-                />
-              </div>
-            </div>
-          </div>
-          <br/>
+  return (
+    <div className="container">
+      <h2>Login</h2>
+      <form onSubmit={onSubmitHandler}>
+        <div className="form-group">
           <div className="row">
-            <div className="col-sm-3">
-              <button type="submit" className="btn  btn-success">
-                Submit
-              </button>
+            <div className="col-sm-2">
+              <label>Email</label>
             </div>
-            <div className="col-sm-4">
-            <Link to="/forgot" className="btn btn-primary">Forget Password</Link>
+            <div className="col-sm">
+              <input
+                type="email"
+                className="form-control"
+                id="email1"
+                placeholder="Enter your email!"
+                required
+                onChange={onEmailHandler}
+                value={email}
+              />
             </div>
           </div>
-          <b>{this.state.error}</b>
-        </form>
-      </div>
-    );
-  }
+        </div>
+        <div className="form-group">
+          <div className="row">
+            <div className="col-sm-2">
+              <label>Password</label>
+            </div>
+            <div className="col-sm">
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                placeholder="Enter the password!"
+                required
+                value={password}
+                onChange={onPassHandler}
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div className="row">
+          <div className="col-sm-3">
+            <button type="submit" className="btn  btn-success">
+              Submit
+            </button>
+          </div>
+          <div className="col-sm-4">
+            <Link to="/forgot" className="btn btn-primary">Forget Password</Link>
+          </div>
+        </div>
+        {/*<b>e.error}</b>*/}
+      </form>
+    </div>
+  );
+
 }
 
 export default Login;
